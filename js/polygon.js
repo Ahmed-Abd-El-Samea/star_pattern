@@ -1,4 +1,5 @@
 function Polygon(){
+    // this.sides;
     this.vertices = [];
     this.edges = [];
 
