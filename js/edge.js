@@ -1,7 +1,9 @@
-function Edge(a,b){
+function Edge(a,b, sides){
     this.a = a;
     this.b = b;
     this.mid;
+
+    this.sidesCount = sides;
 
     this.h1;
     this.h2;
@@ -25,8 +27,8 @@ function Edge(a,b){
         var offset1;
         var offset2;
 
-        var alpha = 45; // half the angle of the square right now
-        // console.log(Math.sin(90 * Math.PI / 180));
+        var alpha = (180*(sidesCount-2))/(sidesCount)/2; // half the angle of the square right now
+        // console.log(alpha);
         var beta = 180 - angle - alpha;
         hlen = (edgeLength * Math.sin(alpha * Math.PI / 180)) / Math.sin(beta * Math.PI / 180);
         // console.log(hlen);
@@ -42,8 +44,8 @@ function Edge(a,b){
             offset2 = this.mid;
             // console.log(this.mid);
         }
-        v1.rotate(-angle);
-        v2.rotate(angle);
+        v1.rotate(angle);
+        v2.rotate(-angle);
         // console.log(this.mid, v1, v2);
 
         

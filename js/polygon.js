@@ -1,5 +1,5 @@
-function Polygon(){
-    // this.sides;
+function Polygon(sides){
+    this.sidesCount = sides;
     this.vertices = [];
     this.edges = [];
 
@@ -8,7 +8,7 @@ function Polygon(){
         var totalVertices = this.vertices.length;
         if(totalVertices > 0){
             var previousVertex = this.vertices[totalVertices - 1];
-            var edge = new Edge(previousVertex, newVertex);
+            var edge = new Edge(previousVertex, newVertex, this.sidesCount);
             this.edges.push(edge);
         }
         this.vertices.push(newVertex);
