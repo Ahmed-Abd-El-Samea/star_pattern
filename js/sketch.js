@@ -4,11 +4,15 @@ var angle = 60;
 var delta = 20;;
 var tiles = 1;
 var sidesCount = 7;
+var offset = 0;
+var rotation = 90;
 
 var deltaSlider;
 var angleSlider;
 var tilesSlider;
 var sidesSlider;
+var offsetSlider;
+var rotationSlider;
 
 function setup(){
     createCanvas(400, 400);
@@ -17,6 +21,8 @@ function setup(){
     angleSlider = createSlider(0,90,45);
     tilesSlider = createSlider(1,20,1);
     sidesSlider = createSlider(3,10,4);
+    offsetSlider = createSlider(0,5, 1);
+    rotationSlider = createSlider(0,90, 45);
     angleMode(DEGREES);
 
     var inc = width/tiles;
@@ -28,7 +34,7 @@ function setup(){
             // var sidesCount = 10;
             for(var i = 0; i < sidesCount; i++){
 
-                poly.addVertex(( Math.sin( i / sidesCount * 2 * Math.PI ) * width/2 ) + xOffset, ( Math.cos( i / sidesCount * 2 * Math.PI ) * width/2 )+ yOffset);
+                poly.addVertex(( Math.sin( i / sidesCount * 2 * Math.PI + (rotation*Math.PI/180) ) * width/2 ) + xOffset, ( Math.cos( i / sidesCount * 2 * Math.PI + (rotation*Math.PI/180) ) * width/2 )+ yOffset);
                 ellipse(( Math.sin( i / sidesCount * 2 * Math.PI ) * width/2 ) + xOffset, ( Math.cos( i / sidesCount * 2 * Math.PI ) * width/2 )+ yOffset, 20);
             }
             poly.close();
@@ -44,18 +50,20 @@ function draw(){
     delta = deltaSlider.value();
     tiles = tilesSlider.value();
     sidesCount = sidesSlider.value();
+    offset = offsetSlider.value();
+    rotation = rotationSlider.value();
 
     polys = [];
-    var inc = width/tiles;
+    var inc = (width/tiles/offset);
     for(var x = 0; x < width; x+= inc){
         for(var y = 0; y < height; y+= inc){
             var poly = new Polygon(sidesCount);
-            var xOffset = (width / 2) / tiles;
-            var yOffset = (width / 2) / tiles;
+            var xOffset = (width / 2) / tiles/offset;
+            var yOffset = (width / 2) / tiles/offset;
             // var sidesCount = 10;
             for(var i = 0; i < sidesCount; i++){
 
-                poly.addVertex(( Math.sin( i / sidesCount * 2 * Math.PI ) * ((width/2) / tiles) ) + xOffset+x, ( Math.cos( i / sidesCount * 2 * Math.PI ) * ((width/2) / tiles) )+ yOffset+y);
+                poly.addVertex(( Math.sin( i / sidesCount * 2 * Math.PI + (rotation*Math.PI/180) ) * ((width/2) / tiles) ) + xOffset+x, ( Math.cos( i / sidesCount * 2 * Math.PI + (rotation*Math.PI/180) ) * ((width/2) / tiles) )+ yOffset+y);
                 // ellipse(( Math.sin( i / sidesCount * 2 * Math.PI ) * ((width/2) / tiles) ) + xOffset, ( Math.cos( i / sidesCount * 2 * Math.PI ) * ((width/2) / tiles) )+ yOffset, 20/tiles);
             }
             poly.close();
