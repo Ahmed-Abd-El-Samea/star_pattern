@@ -26,9 +26,10 @@ function setup(){
     angleSlider = createSlider(0,360,45);
     createSpan('Tiles Count');
     tilesSlider = createSlider(1,50,1,1);
+    createElement('br');
     createSpan('Sides');
     sidesSlider = createSlider(4,20,4, 2);
-    createSpan('inner repetition');
+    createSpan('Inner Repetition');
     offsetSlider = createSlider(0,5, 1);
     createSpan('Rotation');
     rotationSlider = createSlider(0,180, 90, 5);
