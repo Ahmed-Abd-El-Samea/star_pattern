@@ -55,7 +55,7 @@ function setup(){
 }
 
 function draw(){
-    background(51);
+    background(255);
     angle = angleSlider.value();
     delta = deltaSlider.value();
     tiles = tilesSlider.value();

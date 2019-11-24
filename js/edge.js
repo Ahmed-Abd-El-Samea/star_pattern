@@ -8,7 +8,7 @@ function Edge(a,b, sides){
     this.h1;
     this.h2;
     this.show = function(){
-        stroke(255, 30);
+        stroke(0, 30);
         if(showGrid){
             line(this.a.x, this.a.y, this.b.x, this.b.y);
         }

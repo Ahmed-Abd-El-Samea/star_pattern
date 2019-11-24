@@ -7,7 +7,7 @@ function Hankin(a,v){
     // this.b = p5.Vector.mult(this.v,2);
 
     this.show = function(){
-        stroke(255);
+        stroke(0);
         line(this.a.x, this.a.y, this.end.x, this.end.y);
         // if(this.end){
         //     fill(255, 255, 0);
