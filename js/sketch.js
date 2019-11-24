@@ -6,6 +6,7 @@ var tiles = 1;
 var sidesCount = 7;
 var offset = 0;
 var rotation = 90;
+var showGrid = true;
 
 var deltaSlider;
 var angleSlider;
@@ -13,16 +14,25 @@ var tilesSlider;
 var sidesSlider;
 var offsetSlider;
 var rotationSlider;
+var GridCheckbox;
 
 function setup(){
     createCanvas(400, 400);
     background(51);
-    deltaSlider = createSlider(0,25,0);
-    angleSlider = createSlider(0,90,45);
-    tilesSlider = createSlider(1,20,1);
-    sidesSlider = createSlider(3,10,4);
+    createElement('br');
+    createSpan('Delta');
+    deltaSlider = createSlider(0,width,0);
+    createSpan('Inner Angle');
+    angleSlider = createSlider(0,360,45);
+    createSpan('Tiles Count');
+    tilesSlider = createSlider(1,50,1,1);
+    createSpan('Sides');
+    sidesSlider = createSlider(4,20,4, 2);
+    createSpan('inner repetition');
     offsetSlider = createSlider(0,5, 1);
-    rotationSlider = createSlider(0,90, 45);
+    createSpan('Rotation');
+    rotationSlider = createSlider(0,180, 90, 5);
+    GridCheckbox = createCheckbox('Show Grid', true);
     angleMode(DEGREES);
 
     var inc = width/tiles;
@@ -52,6 +62,8 @@ function draw(){
     sidesCount = sidesSlider.value();
     offset = offsetSlider.value();
     rotation = rotationSlider.value();
+    showGrid = GridCheckbox.checked();
+    // console.log(GridCheckbox.checked());
 
     polys = [];
     var inc = (width/tiles/offset);

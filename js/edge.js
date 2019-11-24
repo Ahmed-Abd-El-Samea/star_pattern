@@ -9,8 +9,9 @@ function Edge(a,b, sides){
     this.h2;
     this.show = function(){
         stroke(255, 30);
-        line(this.a.x, this.a.y, this.b.x, this.b.y);
-        
+        if(showGrid){
+            line(this.a.x, this.a.y, this.b.x, this.b.y);
+        }
         this.h1.show();
         this.h2.show();
     }
